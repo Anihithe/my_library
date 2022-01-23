@@ -5,14 +5,24 @@ class MainMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Column(
+    return ListView(
       children: [
-        Text("Menu1"),
-        Text("Menu2"),
-        Text("Menu3"),
-        Text("Menu4"),
+        ListTile(
+          leading: const Icon(Icons.favorite),
+          title: const Text("text"),
+          onTap: () {},
+        ),
+        ListTile(
+          leading: const Icon(Icons.favorite),
+          title: const Text("text"),
+          onTap: () {},
+        ),
+        ListTile(
+          leading: const Icon(Icons.favorite),
+          title: const Text("text"),
+          onTap: () {},
+        ),
       ],
-    ));
+    );
   }
 }
