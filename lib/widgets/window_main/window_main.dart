@@ -26,14 +26,47 @@ class MainView extends StatelessWidget {
   }
 }
 
-class AppMenu extends StatelessWidget {
+class AppMenu extends StatefulWidget {
   const AppMenu({Key? key}) : super(key: key);
 
   @override
+  State<AppMenu> createState() => _AppMenuState();
+}
+
+class _AppMenuState extends State<AppMenu> {
+  bool isExpanded = true;
+
+  double menuSize = 200;
+
+  @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      width: 200,
-      child: MainMenu(),
+    return SizedBox(
+      width: menuSize,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Expanded(
+            child: MainMenu(
+              isExpanded: isExpanded,
+            ),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+                minimumSize: const Size.fromHeight(40),
+                alignment: Alignment.centerRight),
+            onPressed: () {
+              setState(() {
+                isExpanded = !isExpanded;
+                menuSize = isExpanded ? 200 : 60;
+              });
+            },
+            child: Icon(
+              isExpanded ? Icons.arrow_back : Icons.arrow_forward,
+              color: Colors.grey,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
